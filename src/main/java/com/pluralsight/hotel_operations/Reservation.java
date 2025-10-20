@@ -4,15 +4,37 @@ public class Reservation {
     private String roomType;
     private double price;
     private int numberOfNights;
-    boolean isWeekend;
-    double reservationTotal;
+    private boolean isWeekend;
+    private double reservationTotal;
+
+    public Reservation(String roomType, int numberOfNights, boolean isWeekend) {
+        this.roomType = roomType.toLowerCase();
+        switch (roomType) {
+            case "king":
+                this.price = 139.0;
+                break;
+            case "double":
+                this.price = 124.0;
+                break;
+        }
+        this.numberOfNights = numberOfNights;
+        this.isWeekend = isWeekend;
+    }
 
     public String getRoomType() {
         return roomType;
     }
 
     public void setRoomType(String roomType) {
-        this.roomType = roomType;
+        this.roomType = roomType.toLowerCase();
+        switch (roomType) {
+            case "king":
+                this.price = 139.0;
+                break;
+            case "double":
+                this.price = 124.0;
+                break;
+        }
     }
 
     public double getPrice() {
@@ -36,6 +58,12 @@ public class Reservation {
     }
 
     public double getReservationTotal() {
+        reservationTotal = price * numberOfNights;
+
+        if (isWeekend) {
+            reservationTotal += reservationTotal * .10;
+        }
+
         return reservationTotal;
     }
 }

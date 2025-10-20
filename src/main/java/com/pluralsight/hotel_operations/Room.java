@@ -2,11 +2,11 @@ package com.pluralsight.hotel_operations;
 
 // this class is responsible for knowing everything related to a hotel room
 public class Room {
-    int numBeds;
-    double price;
-    boolean occupied;
-    boolean clean;
-    boolean available; // only true if room is clean and not occupied
+    private int numBeds;
+    private double price;
+    private boolean occupied;
+    private boolean clean;
+    private boolean available; // only true if room is clean and not occupied
 
     public Room(int numBeds, double price, boolean occupied, boolean clean, boolean available) {
         this.numBeds = numBeds;
