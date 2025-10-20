@@ -5,31 +5,25 @@ public class Room {
     private int numBeds;
     private double price;
     private boolean occupied;
-    private boolean clean;
-    private boolean available; // only true if room is clean and not occupied
+    private boolean dirty;
+    private boolean available = false; // only true if room is clean and not occupied
 
-    public Room(int numBeds, double price, boolean occupied, boolean clean, boolean available) {
+    public Room(int numBeds, double price, boolean occupied, boolean dirty) {
         this.numBeds = numBeds;
         this.price = price;
         this.occupied = occupied;
-        this.clean = clean;
-        this.available = available;
+        this.dirty = dirty;
+        if (!this.dirty && !this.occupied) {
+            this.available = true;
+        }
     }
 
     public int getNumBeds() {
         return numBeds;
     }
 
-    public void setNumBeds(int numBeds) {
-        this.numBeds = numBeds;
-    }
-
     public double getPrice() {
         return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public boolean isOccupied() {
@@ -40,19 +34,12 @@ public class Room {
         this.occupied = occupied;
     }
 
-    public boolean isClean() {
-        return clean;
-    }
-
-    public void setClean(boolean clean) {
-        this.clean = clean;
+    public boolean isDirty() {
+        return dirty;
     }
 
     public boolean isAvailable() {
         return available;
     }
 
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
 }
