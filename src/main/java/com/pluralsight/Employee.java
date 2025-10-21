@@ -77,10 +77,17 @@ public class Employee {
         if (this.punchIn == 0) {
             this.punchIn = time;
         }
-        else {
+        else if (this.punchOut == 0) {
             this.punchOut = time;
         }
 
     }
 
+    public double getPunchIn() {
+        return punchIn;
+    }
+
+    public double getPunchOut() {
+        return punchOut;
+    }
 }
