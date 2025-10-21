@@ -34,7 +34,7 @@ public class Hotel {
                 booked = true;
             }
         }
-        else if ((this.numberOfRooms + roomsToBook ) <= this.numberOfRooms) {
+        else if ((this.bookedBasicRooms + roomsToBook ) <= this.numberOfRooms) {
             this.bookedBasicRooms += roomsToBook;
             booked = true;
         }
