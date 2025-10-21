@@ -7,15 +7,43 @@ import java.util.stream.Collectors;
 public class Hotel {
 
     private String name;
+    private int numberOfSuites;
     private int numberOfRooms;
-    private int bookedRooms;
-    private ArrayList<Room> rooms;
+    private int bookedSuites;
+    private int bookedBasicRooms;
 
-    public Hotel(String name, ArrayList<Room> rooms) {
+    public Hotel(String name, int numberOfSuites, int numberOfRooms) {
 
         this.name = name;
-        this.rooms = rooms;
-        this.numberOfRooms = rooms.size();
+        this.numberOfSuites = numberOfSuites;
+        this.numberOfRooms = numberOfRooms;
+
+    }
+
+    public Hotel(String name, int numberOfSuites, int numberOfRooms, int bookedSuites, int bookedBasicRooms) {
+        this.name = name;
+        this.numberOfSuites = numberOfSuites;
+        this.numberOfRooms = numberOfRooms;
+        this.bookedSuites = bookedSuites;
+        this.bookedBasicRooms = bookedBasicRooms;
+    }
+
+    public boolean bookRoom(int numberOfRooms, boolean isSuite) {
+
+        boolean booked = false;
+
+        if (isSuite) {
+            if (getNumberOfSuites() < getBookedSuites()) {
+                setBookedSuites(getBookedSuites() + 1);
+                booked = true;
+            }
+        }
+        else if (getNumberOfRooms() < getBookedBasicRooms()) {
+            setBookedBasicRooms(getNumberOfRooms() + 1);
+            booked = true;
+        }
+
+        return booked;
 
     }
 
@@ -23,24 +51,47 @@ public class Hotel {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getNumberOfSuites() {
+        return numberOfSuites;
     }
 
     public int getNumberOfRooms() {
         return numberOfRooms;
     }
 
-    public int getBookedRooms() {
-       return rooms.stream()
-                .filter(r -> r.isOccupied())
-                .collect(Collectors.toList()).size();
+    public int getBookedSuites() {
+        return bookedSuites;
     }
 
-    public int getNumOfAvailableRooms() {
-        return rooms.stream()
-                .filter(r -> r.isAvailable())
-                .collect((Collectors.toList())).size();
+    public int getBookedBasicRooms() {
+        return bookedBasicRooms;
     }
 
+    public int getAvailableSuites() {
+        return getNumberOfSuites() - getBookedSuites();
+    }
+
+    public int getAvailableRooms() {
+        return getNumberOfRooms() - getBookedBasicRooms();
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setNumberOfSuites(int numberOfSuites) {
+        this.numberOfSuites = numberOfSuites;
+    }
+
+    public void setNumberOfRooms(int numberOfRooms) {
+        this.numberOfRooms = numberOfRooms;
+    }
+
+    public void setBookedSuites(int bookedSuites) {
+        this.bookedSuites = bookedSuites;
+    }
+
+    public void setBookedBasicRooms(int bookedBasicRooms) {
+        this.bookedBasicRooms = bookedBasicRooms;
+    }
 }
