@@ -58,6 +58,7 @@ public class Room {
 
     public void checkOut() {
         setOccupied(false);
+        cleanRoom();
     }
 
     public void cleanRoom() {
