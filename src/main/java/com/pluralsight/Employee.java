@@ -6,6 +6,8 @@ public class Employee {
     private String department;
     private double payRate;
     private double hoursWorked;
+    private double punchIn;
+    private double punchOut;
 
     public Employee(String employeeID, String name, String department, double payRate, double hoursWorked) {
         this.employeeID = employeeID;
@@ -68,6 +70,16 @@ public class Employee {
     public double getOvertimeHours() {
 
         return getOvertimeHours() > 40 ? getOvertimeHours() - 40 : 0;
+
+    }
+
+    public void punchTimeCard (double time) {
+        if (this.punchIn == 0) {
+            this.punchIn = time;
+        }
+        else {
+            this.punchOut = time;
+        }
 
     }
 
