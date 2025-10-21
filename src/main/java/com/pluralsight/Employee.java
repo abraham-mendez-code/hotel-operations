@@ -77,7 +77,7 @@ public class Employee {
 
     public void punchIn (double time) {
 
-        this.punchIn = punchIn;
+        this.punchIn = time;
 
     }
 
@@ -110,10 +110,10 @@ public class Employee {
     }
 
     public double getPunchIn() {
-        return punchIn;
+        return this.punchIn;
     }
 
     public double getPunchOut() {
-        return punchOut;
+        return this.punchOut;
     }
 }
