@@ -1,14 +1,22 @@
-package com.pluralsight.hotel_operations;
+package com.pluralsight;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Hotel {
 
     private String name;
     private int numberOfRooms;
     private int bookedRooms;
+    private ArrayList<Room> rooms;
 
-    public Hotel(int numberOfRooms, String name) {
-        this.numberOfRooms = numberOfRooms;
+    public Hotel(String name, ArrayList<Room> rooms) {
+
         this.name = name;
+        this.rooms = rooms;
+        this.numberOfRooms = rooms.size();
+        //this.bookedRooms =
+
     }
 
     public String getName() {
@@ -21,10 +29,6 @@ public class Hotel {
 
     public int getNumberOfRooms() {
         return numberOfRooms;
-    }
-
-    public void setNumberOfRooms(int numberOfRooms) {
-        this.numberOfRooms = numberOfRooms;
     }
 
     public int getBookedRooms() {
