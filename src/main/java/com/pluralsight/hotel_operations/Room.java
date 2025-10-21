@@ -2,24 +2,21 @@ package com.pluralsight.hotel_operations;
 
 // this class is responsible for knowing everything related to a hotel room
 public class Room {
-    private int numBeds;
+    private int numberOfBeds;
     private double price;
-    private boolean occupied;
-    private boolean dirty;
+    private boolean isOccupied;
+    private boolean isDirty;
     private boolean available = false; // only true if room is clean and not occupied
 
     public Room(int numBeds, double price, boolean occupied, boolean dirty) {
-        this.numBeds = numBeds;
+        this.numberOfBeds = numBeds;
         this.price = price;
-        this.occupied = occupied;
-        this.dirty = dirty;
-        if (!this.dirty && !this.occupied) {
-            this.available = true;
-        }
+        this.isOccupied = occupied;
+        this.isDirty = dirty;
     }
 
-    public int getNumBeds() {
-        return numBeds;
+    public int getNumberOfBeds() {
+        return numberOfBeds;
     }
 
     public double getPrice() {
@@ -27,19 +24,22 @@ public class Room {
     }
 
     public boolean isOccupied() {
-        return occupied;
+        return isOccupied;
     }
 
     public void setOccupied(boolean occupied) {
-        this.occupied = occupied;
+        this.isOccupied = occupied;
     }
 
     public boolean isDirty() {
-        return dirty;
+        return isDirty;
     }
 
     public boolean isAvailable() {
-        return available;
+        if (!this.isDirty() && !this.isOccupied()) {
+            return true;
+        }
+        return false;
     }
 
 }
