@@ -1,9 +1,5 @@
 package com.pluralsight;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
 public class Hotel {
 
     private String name;
@@ -28,18 +24,18 @@ public class Hotel {
         this.bookedBasicRooms = bookedBasicRooms;
     }
 
-    public boolean bookRoom(int numberOfRooms, boolean isSuite) {
+    public boolean bookRoom(int roomsToBook, boolean isSuite) {
 
         boolean booked = false;
 
         if (isSuite) {
-            if (getNumberOfSuites() < getBookedSuites()) {
-                setBookedSuites(getBookedSuites() + 1);
+            if ((this.bookedSuites + roomsToBook) <= this.numberOfSuites) {
+                this.bookedSuites += roomsToBook;
                 booked = true;
             }
         }
-        else if (getNumberOfRooms() < getBookedBasicRooms()) {
-            setBookedBasicRooms(getNumberOfRooms() + 1);
+        else if ((this.numberOfRooms + roomsToBook ) <= this.numberOfRooms) {
+            this.bookedBasicRooms += roomsToBook;
             booked = true;
         }
 
@@ -47,51 +43,12 @@ public class Hotel {
 
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getNumberOfSuites() {
-        return numberOfSuites;
-    }
-
-    public int getNumberOfRooms() {
-        return numberOfRooms;
-    }
-
-    public int getBookedSuites() {
-        return bookedSuites;
-    }
-
-    public int getBookedBasicRooms() {
-        return bookedBasicRooms;
-    }
-
     public int getAvailableSuites() {
-        return getNumberOfSuites() - getBookedSuites();
+        return this.numberOfSuites - this.bookedSuites;
     }
 
     public int getAvailableRooms() {
-        return getNumberOfRooms() - getBookedBasicRooms();
+        return this.numberOfRooms - this.bookedBasicRooms;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setNumberOfSuites(int numberOfSuites) {
-        this.numberOfSuites = numberOfSuites;
-    }
-
-    public void setNumberOfRooms(int numberOfRooms) {
-        this.numberOfRooms = numberOfRooms;
-    }
-
-    public void setBookedSuites(int bookedSuites) {
-        this.bookedSuites = bookedSuites;
-    }
-
-    public void setBookedBasicRooms(int bookedBasicRooms) {
-        this.bookedBasicRooms = bookedBasicRooms;
-    }
 }
