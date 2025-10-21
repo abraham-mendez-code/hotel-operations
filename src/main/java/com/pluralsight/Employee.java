@@ -77,7 +77,7 @@ public class Employee {
         if (this.punchIn == 0) {
             this.punchIn = time;
         }
-        else if (this.punchOut == 0) {
+        else {
             this.punchOut = time;
         }
 
