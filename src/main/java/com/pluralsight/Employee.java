@@ -15,6 +15,46 @@ public class Employee {
         this.hoursWorked = hoursWorked;
     }
 
+    public String getEmployeeID() {
+        return employeeID;
+    }
+
+    public void setEmployeeID(String employeeID) {
+        this.employeeID = employeeID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public double getPayRate() {
+        return payRate;
+    }
+
+    public void setPayRate(double payRate) {
+        this.payRate = payRate;
+    }
+
+    public double getHoursWorked() {
+        return hoursWorked;
+    }
+
+    public void setHoursWorked(double hoursWorked) {
+        this.hoursWorked = hoursWorked;
+    }
+
     public double getTotalPay() {
         double totalPay = (this.payRate * getRegularHours()) + ((payRate * 1.5) * getOvertimeHours() );
 
@@ -22,15 +62,7 @@ public class Employee {
     }
 
     public double getRegularHours() {
-        double regularHours = 0;
-
-        if (this.hoursWorked > 40.0) {
-            regularHours = 40.0;
-        } else {
-            regularHours = this.hoursWorked;
-        }
-
-        return regularHours;
+        return Math.min(hoursWorked, 40);
     }
 
     public double getOvertimeHours() {

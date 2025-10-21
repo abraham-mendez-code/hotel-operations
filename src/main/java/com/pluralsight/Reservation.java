@@ -2,23 +2,13 @@ package com.pluralsight;
 
 public class Reservation {
     private String roomType;
-    private double price;
     private int numberOfNights;
-    private boolean weekend;
-    private double reservationTotal;
+    private boolean isWeekend;
 
-    public Reservation(String roomType, int numberOfNights, boolean weekend) {
-        this.roomType = roomType.toLowerCase();
-        switch (roomType) {
-            case "king":
-                this.price = 139.0;
-                break;
-            case "double":
-                this.price = 124.0;
-                break;
-        }
+    public Reservation(String roomType, int numberOfNights, boolean isWeekend) {
+        this.roomType = roomType;
         this.numberOfNights = numberOfNights;
-        this.weekend = this.weekend;
+        this.isWeekend = isWeekend;
     }
 
     public String getRoomType() {
@@ -26,19 +16,7 @@ public class Reservation {
     }
 
     public void setRoomType(String roomType) {
-        this.roomType = roomType.toLowerCase();
-        switch (roomType) {
-            case "king":
-                this.price = 139.0;
-                break;
-            case "double":
-                this.price = 124.0;
-                break;
-        }
-    }
-
-    public double getPrice() {
-        return price;
+        this.roomType = roomType;
     }
 
     public int getNumberOfNights() {
@@ -50,20 +28,24 @@ public class Reservation {
     }
 
     public boolean isWeekend() {
-        return weekend;
+        return isWeekend;
     }
 
     public void setIsWeekend(boolean isWeekend) {
-        this.weekend = this.weekend;
+        this.isWeekend = isWeekend;
+    }
+
+    public double getPrice() {
+        return this.getRoomType().equalsIgnoreCase("king") ? 139: 124;
     }
 
     public double getReservationTotal() {
-        reservationTotal = price * numberOfNights;
+        double total = getPrice() * numberOfNights;
 
-        if (weekend) {
-            reservationTotal += reservationTotal * .10;
+        if (this.isWeekend()) {
+            total += total * .10;
         }
 
-        return reservationTotal;
+        return total;
     }
 }
