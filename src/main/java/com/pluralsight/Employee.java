@@ -1,4 +1,4 @@
-package com.pluralsight.hotel_operations;
+package com.pluralsight;
 
 public class Employee {
     private String employeeID;
@@ -6,6 +6,14 @@ public class Employee {
     private String department;
     private double payRate;
     private double hoursWorked;
+
+    public Employee(String employeeID, String name, String department, double payRate, double hoursWorked) {
+        this.employeeID = employeeID;
+        this.name = name;
+        this.department = department;
+        this.payRate = payRate;
+        this.hoursWorked = hoursWorked;
+    }
 
     public double getTotalPay() {
         double totalPay = (this.payRate * getRegularHours()) + ((payRate * 1.5) * getOvertimeHours() );
