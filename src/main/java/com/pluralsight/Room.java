@@ -52,17 +52,37 @@ public class Room {
     }
 
     public void checkIn() {
-        setOccupied(true);
-        setDirty(true);
+
+        if (isAvailable()) {
+            setOccupied(true);
+            setDirty(true);
+        }
+
     }
 
     public void checkOut() {
-        setOccupied(false);
-        cleanRoom();
+
+        if (isOccupied) {
+            setOccupied(false);
+            cleanRoom();
+        }
+
     }
 
-    public void cleanRoom() {
-        setDirty(false);
+    public boolean cleanRoom() {
+
+        boolean roomCleaned = false;
+
+        if (!isOccupied()) { //if the room is not occupied
+            setDirty(false); //clean the room
+            roomCleaned = true;
+        }
+        else {
+            System.out.println("Unable to clean the room, the room is still occupied.");
+        }
+
+        return roomCleaned;
+
     }
 
 }
