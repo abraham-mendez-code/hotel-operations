@@ -7,26 +7,50 @@ public class Main {
         //testing our room
         Room someRoom = new Room(2, 420.0, false, false);
 
-        //is it available?
-        System.out.println("is the room available:" + someRoom.isAvailable());
-
-        //if statement similar to above
+        //if statement checking if the room is available
         if(someRoom.isAvailable()){
             System.out.println("The room is available");
         }else{
             System.out.println("The room is not available");
         }
 
-        //change property to make the room not available
-        someRoom.setDirty(true);
+        //test the checkIn method
+        someRoom.checkIn();
 
-        System.out.println("The room is now dirty!");
+        //tell user they are checking in
+        System.out.println("Checking in!");
+
+        //check if the room is available
+        if(someRoom.isAvailable()){
+            System.out.println("The room is available");
+        }else{
+            System.out.println("The room is not available");
+        }
+
+        //test the checkOut method
+        someRoom.checkOut();
+
+        System.out.println("Checking out!");
 
         if(someRoom.isAvailable()){
             System.out.println("The room is available");
         }else{
             System.out.println("The room is not available");
         }
+
+        //test the cleanRoom method
+        someRoom.cleanRoom();
+
+        //tell the user the room is cleaned
+        System.out.println("Cleaned the room!");
+
+        //check if the room is available
+        if(someRoom.isAvailable()){
+            System.out.println("The room is available");
+        }else{
+            System.out.println("The room is not available");
+        }
+
 
         //testing the reservation
         Reservation someReservation = new Reservation("double", 3, false);
@@ -85,6 +109,9 @@ public class Main {
 
         //print total pay
         System.out.println("Total pay: " + someEmployee.getTotalPay());
+
+
+
     }
 
 }
