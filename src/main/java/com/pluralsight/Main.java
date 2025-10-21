@@ -40,20 +40,6 @@ public class Main {
             System.out.println("The room is not available");
         }
 
-        //test the cleanRoom method
-        someRoom.cleanRoom();
-
-        //tell the user the room is cleaned
-        System.out.println("Cleaned the room!");
-
-        //check if the room is available
-        if(someRoom.isAvailable()){
-            System.out.println("The room is available");
-        }else{
-            System.out.println("The room is not available");
-        }
-
-
         //testing the reservation
         Reservation someReservation = new Reservation("double", 3, false);
 
