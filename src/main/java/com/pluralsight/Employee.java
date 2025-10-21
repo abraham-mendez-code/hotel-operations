@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import java.time.LocalTime;
+
 public class Employee {
     private String employeeID;
     private String name;
@@ -73,14 +75,38 @@ public class Employee {
 
     }
 
-    public void punchTimeCard (double time) {
-        if (this.punchIn == 0) {
-            this.punchIn = time;
-        }
-        else {
-            this.punchOut = time;
-        }
+    public void punchIn (double time) {
 
+        this.punchIn = punchIn;
+
+    }
+
+    // overloaded parameterless punchIn method which uses the current time
+    public void punchIn () {
+        //get the current time
+        LocalTime localTime = LocalTime.now();
+
+        // get the current time as a double
+        double time = (localTime.getHour() + (double) localTime.getMinute() / 60);
+
+        this.punchIn = time;
+    }
+
+    public void punchOut (double time) {
+
+        this.punchOut = time;
+
+    }
+
+    // overloaded parameterless punchOut method which uses the current time
+    public void punchOut () {
+        //get the current time
+        LocalTime localTime = LocalTime.now();
+
+        // get the current time as a double
+        double time = (localTime.getHour() + (double) localTime.getMinute() / 60);
+
+        this.punchOut = time;
     }
 
     public double getPunchIn() {
