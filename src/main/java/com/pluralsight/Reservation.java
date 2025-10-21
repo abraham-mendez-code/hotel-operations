@@ -1,4 +1,4 @@
-package com.pluralsight.hotel_operations;
+package com.pluralsight;
 
 public class Reservation {
     private String roomType;
