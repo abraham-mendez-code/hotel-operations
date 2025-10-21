@@ -1,17 +1,18 @@
 package com.pluralsight.hotel_operations;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        Hotel hotel = new Hotel(5, "Westworld");
 
-        Reservation reservation = new Reservation("king", 3, false);
-        Room room = new Room(1, reservation.getReservationTotal(), false, false);
+        Room[] rooms = new Room[hotel.getNumberOfRooms()];
 
-        System.out.println(reservation.getPrice());
+        //rooms[0] = new Room(2, )
+
     }
 
 }
