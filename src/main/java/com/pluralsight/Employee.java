@@ -70,15 +70,11 @@ public class Employee {
     }
 
     public double getOvertimeHours() {
-
         return getHoursWorked() > 40 ? getHoursWorked() - 40 : 0;
-
     }
 
     public void punchIn (double time) {
-
         this.punchIn = time;
-
     }
 
     // overloaded parameterless punchIn method which uses the current time
@@ -93,9 +89,7 @@ public class Employee {
     }
 
     public void punchOut (double time) {
-
         this.punchOut = time;
-
     }
 
     // overloaded parameterless punchOut method which uses the current time
@@ -107,6 +101,11 @@ public class Employee {
         double time = (localTime.getHour() + (double) localTime.getMinute() / 60);
 
         this.punchOut = time;
+    }
+
+    public void punchTimeCard(double punchInTime, double punchOutTime) {
+        this.punchIn(punchInTime);
+        this.punchOut(punchOutTime);
     }
 
     public double getPunchIn() {
