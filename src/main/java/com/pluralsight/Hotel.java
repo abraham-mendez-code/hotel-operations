@@ -2,6 +2,7 @@ package com.pluralsight;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class Hotel {
 
@@ -15,7 +16,6 @@ public class Hotel {
         this.name = name;
         this.rooms = rooms;
         this.numberOfRooms = rooms.size();
-        //this.bookedRooms =
 
     }
 
@@ -32,15 +32,15 @@ public class Hotel {
     }
 
     public int getBookedRooms() {
-        return bookedRooms;
-    }
-
-    public void setBookedRooms(int bookedRooms) {
-        this.bookedRooms = bookedRooms;
+       return rooms.stream()
+                .filter(r -> r.isOccupied())
+                .collect(Collectors.toList()).size();
     }
 
     public int getNumOfAvailableRooms() {
-        return this.getNumberOfRooms() - this.getBookedRooms();
+        return rooms.stream()
+                .filter(r -> r.isAvailable())
+                .collect((Collectors.toList())).size();
     }
 
 }
