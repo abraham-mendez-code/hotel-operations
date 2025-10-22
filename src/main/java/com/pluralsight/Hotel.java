@@ -29,20 +29,21 @@ public class Hotel {
 
     public boolean bookRoom(int roomsToBook, boolean isSuite) {
 
-        boolean booked = false;
-
+        // if booking a suite
         if (isSuite) {
-            if ((this.bookedSuites + roomsToBook) <= this.numberOfSuites) {
+            // if there are enough suites avail book them
+            if (roomsToBook <= getAvailableSuites()) {
                 this.bookedSuites += roomsToBook;
-                booked = true;
+                return true;
             }
-        }
-        else if ((this.bookedBasicRooms + roomsToBook ) <= this.numberOfRooms) {
+        } // if booking a basic room, check if there are enough basic rooms avail and book
+        else if (roomsToBook <= getAvailableRooms()) {
             this.bookedBasicRooms += roomsToBook;
-            booked = true;
+            return true;
         }
 
-        return booked;
+        // unable to book
+        return false;
 
     }
 
