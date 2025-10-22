@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RoomTest {
 
     @Test
-    public void should_be_occupied_and_dirty_after_check_in() {
+    void should_be_occupied_and_dirty_after_check_in() {
 
         // arrange
         Room room = new Room(1, 500, false, false);
@@ -27,7 +27,7 @@ class RoomTest {
     }
 
     @Test
-    public void check_in_should_fail_if_occupied() {
+    void check_in_should_not_dirty_occupied_room() {
 
         // arrange
         Room room = new Room(1, 1, true, false);
@@ -40,7 +40,7 @@ class RoomTest {
     }
 
     @Test
-    public void check_in_should_fail_if_dirty() {
+    void check_in_should_not_occupy_if_dirty() {
 
         // arrange
         Room room = new Room(1,1, false, true);
@@ -54,7 +54,7 @@ class RoomTest {
     }
 
     @Test
-    public void checkOut_should_fail_if_not_occupied() {
+    void checkOut_should_fail_if_not_occupied() {
 
         // arrange
         Room room = new Room(1, 1, false, true);
@@ -68,7 +68,7 @@ class RoomTest {
     }
 
     @Test
-    public void check_out_should_clean_and_empty_room() {
+    void check_out_should_clean_and_empty_room() {
 
         // arrange
         Room room = new Room(1, 1, true, true);
@@ -79,6 +79,34 @@ class RoomTest {
         // assert
         assertFalse(room.isOccupied());
         assertFalse(room.isDirty());
+
+    }
+
+    @Test
+    void clean_room_should_make_the_room_not_dirty () {
+
+        // arrange
+        Room room = new Room(1, 1, false, true);
+
+        // act
+        room.cleanRoom();
+
+        // assert
+        assertFalse(room.isDirty());
+
+    }
+
+    @Test
+    void clean_room_should_fail_if_occupied() {
+
+        // arrange
+        Room room = new Room(1, 1, true, true);
+
+        // act
+        room.cleanRoom();
+
+        // assert
+        assertTrue(room.isDirty());
 
     }
 
